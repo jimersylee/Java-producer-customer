@@ -26,7 +26,7 @@ public class Resource {
             }
         }
         number++;
-        System.out.println(Thread.currentThread().getName()+"生产者线程第"+number+"号");
+        System.out.println(Thread.currentThread().getName() + "生产者------------" + number);
         flag=true;
         notifyAll();
     }
@@ -43,7 +43,7 @@ public class Resource {
             }
         }
 
-        System.out.println(Thread.currentThread().getName()+"消费者线程第"+number+"号");
+        System.out.println(Thread.currentThread().getName() + "消费者****" + number);
         flag=false;
         notifyAll();
     }

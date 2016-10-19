@@ -25,21 +25,21 @@ java的多线程生产者消费者模型
 	* notifyAll()方法：当生产者/消费者向缓冲区放入/取出一个产品时，向其他等待的所有线程发出可执行的通知，同时放弃锁，使自己处于等待状态。
 
 再次测试代码
-	* ProducerConsumerTest.java
+	* main.java
 
-/**
- * Created by yuandl on 2016-10-11.
- */
-public class ProducerConsumerTest {
-    public static void main(String args[]) {
-        Resource resource = new Resource();
+package com.demo;
+
+public class Main {
+
+    public static void main(String[] args) {
+	// write your code here
+
+        Resource resource=new Resource();
         new Thread(new Consumer(resource)).start();
         new Thread(new Consumer(resource)).start();
         new Thread(new Producer(resource)).start();
         new Thread(new Producer(resource)).start();
-
     }
-
 }
 
 
@@ -84,10 +84,7 @@ Thread-3消费者****110
 		* while判断标记，解决了线程获取执行权后，是否要运行！也就是每次wait()后再notify()时先再次判断标记
 
 
-代码改进（Resource中的if->while）/**
- * Created by yuandl on 2016-10-11./**
- * 资源
- */
+代码改进（Resource中的if->while）
 public class Resource {
     
     private int number = 0;
@@ -148,10 +145,7 @@ public class Resource {
 		* notifyAll解决了本方线程一定会唤醒对方线程的问题。
 
 
-最后代码改进（Resource中的notify()->notifyAll()）/**
- * Created by yuandl on 2016-10-11./**
- * 资源
- */
+最后代码改进（Resource中的notify()->notifyAll()）
 public class Resource {
     
     private int number = 0;
